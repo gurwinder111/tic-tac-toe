@@ -68,12 +68,13 @@ render() {
     socket.on('move',values=>{
       // console.log(data['squares']);
       // setResponse(data);
+      // console.log(values);
       console.log(values.squares);
       this.setState({ 
-        squares:values.squares.squares,
-        xIsNext: values.squares.xIsNext,
+        squares:values.squares,
+        xIsNext: values.next,
       });
-      this.handleClick(values.squares.i);
+      // this.handleClick(values.squares.index);
     });
 
   return (

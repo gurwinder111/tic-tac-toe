@@ -15,11 +15,15 @@ var io = socket(server);
 
 io.on('connection', (socket)=>{
     console.log('socket connection made');
-    socket.on('move',( squares, xIsNext ,i)=>{
+    socket.on('move',( data)=>{
         // io.socket.emit('move')
         // console.log("data=>>>>>>");
-        console.log(squares);
-        xIsNext = !xIsNext;
-        io.sockets.emit('move', {squares, xIsNext,i});
+        console.log(data.squares);
+        var next = !data.xIsNext;
+        var squares = [];
+        squares = data.squares;
+        var index = data.i;
+        console.log(next);
+        io.sockets.emit('move', {squares, next,index });
     })
 });
